@@ -2,12 +2,14 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
   repositories {
+    jcenter()
     mavenLocal()
     mavenCentral()
     maven("https://jitpack.io")
   }
   dependencies {
-    classpath("com.github.johnlayton", "riverhilldrive", "0.0.7")
+    classpath("com.github.johnlayton", "riverhilldrive", "0.0.13")
+    classpath("com.fkorotkov", "gradle-libraries-plugin", "1.0")
   }
   configurations {
     classpath {
@@ -31,7 +33,12 @@ plugins {
 
   id("io.spring.dependency-management") version "1.0.8.RELEASE" apply false
   id("org.springframework.boot") version "2.2.0.RELEASE" apply false
+
+  id("com.google.cloud.tools.jib") version "2.2.0" apply false
 }
+
+//apply(plugin = "plugin-libraries")
+//apply(plugin = "com.fkorotkov.libraries")
 
 repositories {
   jcenter()
@@ -40,21 +47,53 @@ repositories {
   maven("https://jitpack.io")
 }
 
-
 allprojects {
-  apply(plugin = "base")
-  apply(plugin = "java")
+
+  buildscript {
+    repositories {
+      jcenter()
+      mavenLocal()
+      mavenCentral()
+      google()
+      maven("https://jitpack.io")
+    }
+  }
 
   repositories {
     jcenter()
     mavenLocal()
     mavenCentral()
+    google()
     maven("https://jitpack.io")
   }
+
+  apply(plugin = "base")
+  apply(plugin = "java")
+
+  apply(plugin = "plugin-libraries")
+  apply(plugin = "plugin-upgrade")
 
   dependencies {
     implementation(kotlin("stdlib-jdk8", "1.3.61"))
   }
+}
+
+subprojects {
+
+//  buildscript {
+//    dependencies {
+//      classpath(libraries["com.github.jengelman.gradle.plugins:shadow"])
+//    }
+//  }
+
+  apply(plugin = "kotlin")
+  apply(plugin = "maven-publish")
+  apply(plugin = "publishing")
+
+  apply(plugin = "plugin-version")
+  apply(plugin = "plugin-group")
+
+//  apply(plugin = "com.fkorotkov.libraries")
 
   tasks.withType<Test> {
     useJUnitPlatform()
@@ -71,12 +110,6 @@ allprojects {
       jvmTarget = "11" // JavaVersion.VERSION_11
     }
   }
-}
-
-subprojects {
-  apply(plugin = "publishing")
-  apply(plugin = "plugin-version")
-  apply(plugin = "plugin-group")
 }
 
 val gradleWrapperVersion: String by project

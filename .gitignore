@@ -1,0 +1,48 @@
+# --- Intellij ---
+/*.iml
+/.gradle
+/.idea
+
+# --- Eclipse ---
+/.settings
+/.classpath
+/.project
+
+# --- VsCode ---
+
+.vscode
+
+*.log
+mb.pid
+node_modules
+npm-debug.log
+.env
+
+# --- Mac ---
+
+.DS_Store
+
+# --- Build ---
+
+/build
+/out
+/bin
+
+*/build
+
+# --- Generated ---
+
+#/api/src/sidwellcourt/java
+#/api/src/sidwellcourt/grpc-java
+#/api/src/sidwellcourt/grpc-kotlin
+/api/src/main/java
+/api/src/main/grpc-java
+/api/src/main/grpc-kotlin
+
+# --- Tools ---
+
+dump.rdb
+
+# --- Resources ---
+
+/app/src/main/resources/logback-spring.xml
