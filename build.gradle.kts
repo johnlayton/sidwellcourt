@@ -11,7 +11,7 @@ buildscript {
     maven("https://jitpack.io")
   }
   dependencies {
-    classpath("com.github.johnlayton", "riverhilldrive", "0.0.13")
+    classpath("com.github.johnlayton", "riverhilldrive", "0.0.15")
     classpath("com.fkorotkov", "gradle-libraries-plugin", "1.0")
   }
   configurations {
@@ -40,7 +40,8 @@ plugins {
   id("com.google.cloud.tools.jib") version "2.2.0" apply false
 }
 
-//apply(plugin = "plugin-libraries")
+apply(plugin = "plugin-libraries")
+apply(plugin = "plugin-navigate")
 //apply(plugin = "com.fkorotkov.libraries")
 
 repositories {
