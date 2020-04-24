@@ -2,6 +2,7 @@ pluginManagement {
   repositories {
     gradlePluginPortal()
     mavenLocal()
+    maven("https://dl.bintray.com/kotlin/kotlin-eap")
     maven("https://jitpack.io")
   }
   resolutionStrategy {

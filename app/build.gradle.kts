@@ -86,12 +86,13 @@ tasks.getByName<Jar>("jar") {
   }
 }
 
-tasks.create<CreateStartScripts>("helloWorldServer") {
-  mainClassName = "com.github.johnlayton.sidwellcourt.SidwellcourtServerKt"
-  applicationName = "sidwellcourt-server"
-//  outputDir = startScripts.outputDir
-//  classpath = startScripts.classpath
-}
+//tasks.create<CreateStartScripts>("sidwellcourtServer") {
+//  mainClassName = "com.github.johnlayton.sidwellcourt.SidwellcourtServerKt"
+//  applicationName = "sidwellcourt-server"
+////  outputDir = file("${project.buildDir}/bin")
+//  outputDir = file("${project.rootProject.projectDir}/bin")
+////  classpath = tasks.shadowJar.get().archiveFile.get()
+//}
 
 jib {
   to {

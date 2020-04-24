@@ -58,12 +58,12 @@
     {
       "group": "io.grpc",
       "name": "grpc-core",
-      "version": "1.28.1"
+      "version": "1.29.0"
     },
     {
       "group": "io.grpc",
       "name": "grpc-services",
-      "version": "1.28.1"
+      "version": "1.29.0"
     },
     {
       "group": "io.grpc",
@@ -73,17 +73,17 @@
     {
       "group": "io.grpc",
       "name": "grpc-netty",
-      "version": "1.28.1"
+      "version": "1.29.0"
     },
     {
       "group": "io.grpc",
       "name": "grpc-protobuf",
-      "version": "1.28.1"
+      "version": "1.29.0"
     },
     {
       "group": "io.grpc",
       "name": "grpc-stub",
-      "version": "1.28.1"
+      "version": "1.29.0"
     },
     {
       "group": "io.grpc",
@@ -93,7 +93,7 @@
     {
       "group": "io.grpc",
       "name": "protoc-gen-grpc-java",
-      "version": "1.28.1"
+      "version": "1.29.0"
     },
     {
       "group": "io.grpc",

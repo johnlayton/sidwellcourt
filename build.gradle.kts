@@ -1,3 +1,5 @@
+import com.fkorotkov.gradle.libraries.tasks.LibrariesBaseTask
+import com.github.benmanes.gradle.versions.updates.resolutionstrategy.ResolutionStrategyWithCurrent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
@@ -5,6 +7,7 @@ buildscript {
     jcenter()
     mavenLocal()
     mavenCentral()
+    maven("https://dl.bintray.com/kotlin/kotlin-eap")
     maven("https://jitpack.io")
   }
   dependencies {
@@ -31,8 +34,8 @@ plugins {
 
   kotlin("plugin.spring") version "1.3.61" apply false
 
-  id("io.spring.dependency-management") version "1.0.8.RELEASE" apply false
-  id("org.springframework.boot") version "2.2.0.RELEASE" apply false
+  id("io.spring.dependency-management") version "1.0.9.RELEASE" apply false
+  id("org.springframework.boot") version "2.2.6.RELEASE" apply false
 
   id("com.google.cloud.tools.jib") version "2.2.0" apply false
 }
@@ -44,6 +47,7 @@ repositories {
   jcenter()
   mavenLocal()
   mavenCentral()
+  maven("https://dl.bintray.com/kotlin/kotlin-eap")
   maven("https://jitpack.io")
 }
 
@@ -55,6 +59,7 @@ allprojects {
       mavenLocal()
       mavenCentral()
       google()
+      maven("https://dl.bintray.com/kotlin/kotlin-eap")
       maven("https://jitpack.io")
     }
   }
@@ -64,6 +69,7 @@ allprojects {
     mavenLocal()
     mavenCentral()
     google()
+    maven("https://dl.bintray.com/kotlin/kotlin-eap")
     maven("https://jitpack.io")
   }
 
@@ -73,18 +79,30 @@ allprojects {
   apply(plugin = "plugin-libraries")
   apply(plugin = "plugin-upgrade")
 
+//  tasks.getting(LibrariesBaseTask::class) {
+//    resolutionStrategy = Action<ResolutionStrategyWithCurrent> () {
+//      componentSelection {
+//        all {
+//          candidate.version.
+//        }
+////        rules.all {
+////          ComponentSelection selection ->
+////          boolean rejected =['dev', 'eap', 'M1'].any { qualifier ->
+////            selection.candidate.version == ~ / (?i).*[.-]${ qualifier }[.\ d -]*/
+////          }
+////          if (rejected) {
+////            selection.reject('dev version')
+////          }
+//      }
+//    }
+//  }
+
   dependencies {
     implementation(kotlin("stdlib-jdk8", "1.3.61"))
   }
 }
 
 subprojects {
-
-//  buildscript {
-//    dependencies {
-//      classpath(libraries["com.github.jengelman.gradle.plugins:shadow"])
-//    }
-//  }
 
   apply(plugin = "kotlin")
   apply(plugin = "maven-publish")
